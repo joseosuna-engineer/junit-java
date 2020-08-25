@@ -91,3 +91,25 @@ public class HelloActionIntegrationTest {
 }
 
 ````
+
+# Hamcrest
+
+Hamcrest is a framework that assists writing software tests in the Java programming language. It supports creating customized assertion matchers ('Hamcrest' is an anagram of 'matchers'), allowing match rules to be defined declaratively.These matchers have uses in unit testing frameworks such as JUnit and jMock.
+
+````
+import org.junit.jupiter.api.Test;
+import static org.hamcrest.MatcherAssert.assertThat; 
+import static org.hamcrest.Matchers.*;
+
+public class BiscuitTest {
+  @Test 
+  public void testEquals() { 
+    Biscuit theBiscuit = new Biscuit("Ginger"); 
+    Biscuit myBiscuit = new Biscuit("Ginger"); 
+    assertThat(theBiscuit, equalTo(myBiscuit)); 
+    assertThat("chocolate chips", theBiscuit.getChocolateChipCount(), equalTo(10)); 
+    assertThat("hazelnuts", theBiscuit.getHazelnutCount(), equalTo(3));
+  } 
+} 
+
+````
