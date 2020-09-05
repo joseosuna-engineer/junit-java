@@ -48,6 +48,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>           
         </dependency>
+        <!-- FEIGN -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>   
+            <version>1.4.7.RELEASE</version> 
+        </dependency>
        
     </dependencies>
 
