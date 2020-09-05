@@ -21,6 +21,8 @@ public class Stubs {
     public static final String S3_OBJECT_KEY = "globalBucketName/folder/";
     public static final String PROP_ONE = "property one";
     public static final String PROP_TWO = "property two";
+    public static final int READ_TIMEUP = 4000;
+    public static final int CONNECTION_TIMEUP = 2000;
 
     public static SomeException SOME_EXCEPTION(String message) {
         return new SomeException(message);
