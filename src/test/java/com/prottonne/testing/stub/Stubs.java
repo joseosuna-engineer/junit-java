@@ -19,6 +19,8 @@ public class Stubs {
     public static final String DATA_TO_READ = "this is my data to read";
     public static final String FILE_NAME = "file";
     public static final String S3_OBJECT_KEY = "globalBucketName/folder/";
+    public static final String PROP_ONE = "property one";
+    public static final String PROP_TWO = "property two";
 
     public static SomeException SOME_EXCEPTION(String message) {
         return new SomeException(message);
