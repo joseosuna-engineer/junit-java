@@ -1,5 +1,7 @@
 package com.prottonne.testing.stub;
 
+import WSPackage.Output;
+import WSPackage.Response;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
@@ -29,6 +31,7 @@ public class Stubs {
     public static final int READ_TIMEUP = 4000;
     public static final int CONNECTION_TIMEUP = 2000;
     public static final BigInteger GUID = BigInteger.TWO;
+    public static final String WS_DATA = "data from ws";
 
     public static SomeException SOME_EXCEPTION(String message) {
         return new SomeException(message);
@@ -100,6 +103,18 @@ public class Stubs {
     public static ManyEntity MANY_ENTITY() {
         ManyEntity manyEntity = new ManyEntity();
         return manyEntity;
+    }
+
+    public static Response WS_RESPONSE() {
+        Response response = new Response();
+        response.setOutput(OUTPUT());
+        return response;
+    }
+
+    public static Output OUTPUT() {
+        Output output = new Output();
+        output.setSomeData(WS_DATA);
+        return output;
     }
 
 }
