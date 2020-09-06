@@ -30,7 +30,7 @@ public class Stubs {
     public static final String PROP_TWO = "property two";
     public static final int READ_TIMEUP = 4000;
     public static final int CONNECTION_TIMEUP = 2000;
-    public static final BigInteger GUID = BigInteger.TWO;
+    public static final BigInteger GUID = BigInteger.valueOf(2);
     public static final String WS_DATA = "data from ws";
 
     public static SomeException SOME_EXCEPTION(String message) {
@@ -85,7 +85,7 @@ public class Stubs {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static Object GENERATE_GUID() {
+    public static BigInteger GENERATE_GUID() {
         return GUID;
     }
 
