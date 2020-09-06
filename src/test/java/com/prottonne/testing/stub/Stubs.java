@@ -6,9 +6,14 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.util.StringInputStream;
 import com.prottonne.testing.dto.Request;
 import com.prottonne.testing.exception.SomeException;
+import com.prottonne.testing.jpa.ManyEntity;
+import com.prottonne.testing.jpa.RootEntity;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.client.methods.HttpRequestBase;
 
@@ -23,6 +28,7 @@ public class Stubs {
     public static final String PROP_TWO = "property two";
     public static final int READ_TIMEUP = 4000;
     public static final int CONNECTION_TIMEUP = 2000;
+    public static final BigInteger GUID = BigInteger.TWO;
 
     public static SomeException SOME_EXCEPTION(String message) {
         return new SomeException(message);
@@ -74,6 +80,26 @@ public class Stubs {
 
     public static byte[] FILE_IN_BYTES() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static Object GENERATE_GUID() {
+        return GUID;
+    }
+
+    public static RootEntity ROOT_ENTITY() {
+        RootEntity rootEntity = new RootEntity();
+        return rootEntity;
+    }
+
+    public static List<ManyEntity> MANY_ENTITY_LIST() {
+        List<ManyEntity> list = new ArrayList();
+        list.add(MANY_ENTITY());
+        return list;
+    }
+
+    public static ManyEntity MANY_ENTITY() {
+        ManyEntity manyEntity = new ManyEntity();
+        return manyEntity;
     }
 
 }
