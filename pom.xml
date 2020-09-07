@@ -10,12 +10,12 @@
     </parent>
     <groupId>com.prottonne</groupId>
     <artifactId>junit-mockito-hamcrest</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>junit-mockito-hamcrest</name>
     <description>JUnit is a unit testing framework for the Java programming language. Mockito is an open source testing framework for Java released under the MIT License. Hamcrest is a framework that assists writing software tests in the Java programming language.</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>
@@ -39,8 +39,7 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-s3</artifactId>
-            <version>1.11.258</version>
-            <type>jar</type>
+            <version>1.11.792</version>
         </dependency>
         
         <!-- httpServerRequest / response -->
@@ -74,20 +73,51 @@
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-core</artifactId>
         </dependency>
-        <!-- For testing proporses -->
+        <!-- For testing proporses SOAP -->
         <dependency>
             <groupId>javax.xml.soap</groupId>
             <artifactId>javax.xml.soap-api</artifactId>
             <version>1.4.0</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.xml.messaging.saaj</groupId>
-            <artifactId>saaj-impl</artifactId>      
-        </dependency>                
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-saaj</artifactId>
+            <version>1.7.9</version>
+        </dependency>              
     </dependencies>
 
     <build>
         <plugins>
+            <!-- to make sure code have Java 11 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <argLine>
+                        --illegal-access=permit
+                    </argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <argLine>
+                        --illegal-access=permit
+                    </argLine>
+                </configuration>
+            </plugin>
+            <!-- spring boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
