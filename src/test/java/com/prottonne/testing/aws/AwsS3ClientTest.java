@@ -16,7 +16,6 @@ import org.apache.http.client.methods.HttpRequestBase;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.mockito.ArgumentMatchers.any;
@@ -105,17 +104,6 @@ public class AwsS3ClientTest {
                         Boolean.TRUE
                 )
         );
-    }
-
-    @Ignore
-    @Test
-    public void testPutMultipart() throws IOException {
-
-        when(multipartFile.getOriginalFilename()).thenReturn("data");
-
-        when(multipartFile.getBytes()).thenReturn(Stubs.FILE_IN_BYTES());
-
-        // TODO
     }
 
 }
