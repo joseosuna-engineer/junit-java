@@ -1,4 +1,6 @@
-# JUnit
+# JUnit5
+
+<img src="https://github.com/joseosuna-engineer/junit-java/blob/main/junit5.png" align="right"  width="300" />
 
 JUnit is a unit testing framework for the Java programming language. JUnit has been important in the development of test-driven development, and is one of a family of unit testing frameworks which is collectively known as xUnit that originated with SUnit.
 
@@ -44,7 +46,24 @@ public class FoobarTest {
 
 ````
 
+# Spring Boot
+
+<img src="https://github.com/joseosuna-engineer/junit-java/blob/main/spring-boot.png" align="right"  width="300" />
+
+**Spring** Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run". <br />
+
+
+# SonarCloud Scan
+
+SonarCloud is a cloud-based code analysis service designed to detect code quality issues in 25 different programming languages, continuously ensuring the maintainability, reliability and security of your code. <br />
+SonarCloud uses state-of-the-art techniques in static code analysis to find problems, and potential problems, in the code that you and your team write. <br />
+Static analysis is called static because it does not rely on actually running the code (analysis of running code is called dynamic analysis). As a result, SonarCloud offers an additional layer of verification, different from automated testing and human code-review. <br />
+
+<img src="https://github.com/joseosuna-engineer/junit-java/blob/main/sonar.png" align="right"  width="300" />
+
 # Mockito
+
+<img src="https://github.com/joseosuna-engineer/junit-java/blob/main/mockito.png" align="right"  width="300" />
 
 Mockito is an open source testing framework for Java released under the MIT License.The framework allows the creation of test double objects (mock objects) in automated unit tests for the purpose of test-driven development (TDD) or behavior-driven development (BDD).
 
@@ -94,6 +113,8 @@ public class HelloActionIntegrationTest {
 
 # Hamcrest
 
+<img src="https://github.com/joseosuna-engineer/junit-java/blob/main/hamcrest.png" align="right"  width="300" />
+
 Hamcrest is a framework that assists writing software tests in the Java programming language. It supports creating customized assertion matchers ('Hamcrest' is an anagram of 'matchers'), allowing match rules to be defined declaratively.These matchers have uses in unit testing frameworks such as JUnit and jMock.
 
 ````
@@ -113,3 +134,9 @@ public class BiscuitTest {
 } 
 
 ````
+
+# JaCoCo
+
+<img src="https://github.com/joseosuna-engineer/junit-java/blob/main/jacoco.png" align="right"  width="300" />
+
+JaCoCo is an open-source toolkit for measuring and reporting Java code coverage.
