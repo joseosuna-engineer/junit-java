@@ -120,9 +120,9 @@ public class JpaClient {
 
             if (null != manyEntityList) {
                 response = Boolean.TRUE;
-                manyEntityList.forEach(manyEntity -> {
-                    entityManager.remove(manyEntity);
-                });
+                manyEntityList.forEach(manyEntity
+                        -> entityManager.remove(manyEntity)
+                );
             }
 
         } finally {
