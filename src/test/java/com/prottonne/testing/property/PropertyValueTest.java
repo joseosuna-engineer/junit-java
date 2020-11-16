@@ -4,20 +4,20 @@ import com.prottonne.testing.dto.Response;
 import com.prottonne.testing.stub.Stubs;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PropertyValueTest {
 
     @InjectMocks
     private PropertyValue propertyValue;
 
-    @Before
+    @BeforeEach
     public void configure() {
         ReflectionTestUtils.setField(propertyValue, "myPropertyName", Stubs.PROP_ONE);
         ReflectionTestUtils.setField(propertyValue, "someProperty", Stubs.PROP_TWO);
