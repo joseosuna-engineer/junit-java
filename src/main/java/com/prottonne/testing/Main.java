@@ -40,7 +40,7 @@ public class Main {
 
     @Bean
     public HttpUrlConnectionMessageSender httpUrlConnectionMessageSender() {
-        HttpUrlConnectionMessageSender sender = new HttpUrlConnectionMessageSender() {
+        return new HttpUrlConnectionMessageSender() {
             @Override
             protected void prepareConnection(HttpURLConnection connection) throws IOException {
                 connection.setReadTimeout(Integer.parseInt(readTimeup));
@@ -49,7 +49,6 @@ public class Main {
                 connection.setDoOutput(Boolean.TRUE);
             }
         };
-        return sender;
     }
 
     @Bean
