@@ -35,14 +35,14 @@ public class OneEntity implements Serializable {
     private RootEntity rootEntity;
 
     @Column(name = "integer_data")
-    private Integer IntegerData;
+    private Integer integerData;
 
     @Column(name = "boolean_data")
-    private Boolean BooleanData;
+    private Boolean booleanData;
 
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "double_data")
-    private Double DoubleData;
+    private Double doubleData;
 
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 50)
@@ -50,10 +50,10 @@ public class OneEntity implements Serializable {
     private String email;
 
     @Column(name = "big_integer_data")
-    private BigInteger BigIntegerData;
+    private BigInteger bigIntegerData;
 
     @Column(name = "character_data")
-    private Character CharacterData;
+    private Character characterData;
 
     public OneEntity() {
     }
@@ -79,27 +79,27 @@ public class OneEntity implements Serializable {
     }
 
     public Integer getIntegerData() {
-        return IntegerData;
+        return integerData;
     }
 
-    public void setIntegerData(Integer IntegerData) {
-        this.IntegerData = IntegerData;
+    public void setIntegerData(Integer integerData) {
+        this.integerData = integerData;
     }
 
     public Boolean getBooleanData() {
-        return BooleanData;
+        return booleanData;
     }
 
-    public void setBooleanData(Boolean BooleanData) {
-        this.BooleanData = BooleanData;
+    public void setBooleanData(Boolean booleanData) {
+        this.booleanData = booleanData;
     }
 
     public Double getDoubleData() {
-        return DoubleData;
+        return doubleData;
     }
 
-    public void setDoubleData(Double DoubleData) {
-        this.DoubleData = DoubleData;
+    public void setDoubleData(Double doubleData) {
+        this.doubleData = doubleData;
     }
 
     public String getEmail() {
@@ -111,19 +111,19 @@ public class OneEntity implements Serializable {
     }
 
     public BigInteger getBigIntegerData() {
-        return BigIntegerData;
+        return bigIntegerData;
     }
 
-    public void setBigIntegerData(BigInteger BigIntegerData) {
-        this.BigIntegerData = BigIntegerData;
+    public void setBigIntegerData(BigInteger bigIntegerData) {
+        this.bigIntegerData = bigIntegerData;
     }
 
     public Character getCharacterData() {
-        return CharacterData;
+        return characterData;
     }
 
-    public void setCharacterData(Character CharacterData) {
-        this.CharacterData = CharacterData;
+    public void setCharacterData(Character characterData) {
+        this.characterData = characterData;
     }
 
     @Override
@@ -153,7 +153,7 @@ public class OneEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "OneEntity{" + "guid=" + guid + ", IntegerData=" + IntegerData + ", BooleanData=" + BooleanData + ", DoubleData=" + DoubleData + ", email=" + email + ", BigIntegerData=" + BigIntegerData + ", CharacterData=" + CharacterData + '}';
+        return "OneEntity{" + "guid=" + guid + ", integerData=" + integerData + ", booleanData=" + booleanData + ", doubleData=" + doubleData + ", email=" + email + ", bigIntegerData=" + bigIntegerData + ", characterData=" + characterData + '}';
     }
 
 }
