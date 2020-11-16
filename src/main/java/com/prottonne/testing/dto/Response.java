@@ -2,7 +2,7 @@ package com.prottonne.testing.dto;
 
 public class Response {
 
-    private String Message;
+    private String message;
     private Boolean uploaded;
 
     public Response() {
@@ -10,11 +10,11 @@ public class Response {
     }
 
     public String getMessage() {
-        return Message;
+        return message;
     }
 
-    public void setMessage(String Message) {
-        this.Message = Message;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Boolean getUploaded() {
