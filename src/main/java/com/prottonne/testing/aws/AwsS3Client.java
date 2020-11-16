@@ -1,5 +1,6 @@
 package com.prottonne.testing.aws;
 
+import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.GetObjectRequest;
@@ -38,11 +39,7 @@ public class AwsS3Client {
 
     public Response put(Request request) throws IOException {
 
-        final String path = getPath();
-
-        final String fileName = request.getFileName();
-
-        final String key = getKey(path, fileName);
+        final String key = getKey(request);
 
         byte[] fileInBytes = Base64.decodeBase64(request.getBase64());
 
@@ -69,11 +66,7 @@ public class AwsS3Client {
 
     public Response get(Request request, HttpServletResponse httpServletResponse) throws IOException {
 
-        final String path = getPath();
-
-        final String fileName = request.getFileName();
-
-        final String key = getKey(path, fileName);
+        final String key = getKey(request);
 
         S3Object s3Object = amazonS3.getObject(
                 new GetObjectRequest(
@@ -99,20 +92,9 @@ public class AwsS3Client {
 
     public Response deleteAll(Request request) {
 
-        final String path = getPath();
+        final String key = getKey(request);
 
-        final String fileName = request.getFileName();
-
-        final String key = getKey(path, fileName);
-
-        ListObjectsRequest listObjectsRequest = new ListObjectsRequest();
-        listObjectsRequest.setBucketName(S3_BUCKET_NAME);
-        listObjectsRequest.setPrefix(key);
-        listObjectsRequest.setDelimiter("/");
-
-        ObjectListing objectListing = amazonS3.listObjects(listObjectsRequest);
-
-        List<S3ObjectSummary> s3ObjectSummaryList = objectListing.getObjectSummaries();
+        List<S3ObjectSummary> s3ObjectSummaryList = listS3ObjectSummaryByName(key);
 
         for (S3ObjectSummary s3ObjectSummary : s3ObjectSummaryList) {
 
@@ -132,22 +114,11 @@ public class AwsS3Client {
 
     public Response isUploaded(Request request) {
 
+        final String key = getKey(request);
+
+        List<S3ObjectSummary> s3ObjectSummaryList = listS3ObjectSummaryByName(key);
+
         Response response = new Response();
-
-        final String path = getPath();
-
-        final String fileName = request.getFileName();
-
-        final String key = getKey(path, fileName);
-
-        ListObjectsRequest listObjectsRequest = new ListObjectsRequest();
-        listObjectsRequest.setBucketName(S3_BUCKET_NAME);
-        listObjectsRequest.setPrefix(key);
-        listObjectsRequest.setDelimiter("/");
-
-        ObjectListing objectListing = amazonS3.listObjects(listObjectsRequest);
-
-        List<S3ObjectSummary> s3ObjectSummaryList = objectListing.getObjectSummaries();
 
         for (S3ObjectSummary s3ObjectSummary : s3ObjectSummaryList) {
 
@@ -161,6 +132,16 @@ public class AwsS3Client {
         return response;
     }
 
+    private List<S3ObjectSummary> listS3ObjectSummaryByName(String key) throws SdkClientException {
+        ListObjectsRequest listObjectsRequest = new ListObjectsRequest();
+        listObjectsRequest.setBucketName(S3_BUCKET_NAME);
+        listObjectsRequest.setPrefix(key);
+        listObjectsRequest.setDelimiter("/");
+        ObjectListing objectListing = amazonS3.listObjects(listObjectsRequest);
+        return objectListing.getObjectSummaries();
+
+    }
+
     private String getPath() {
 
         return S3_GLOBAL_BUCKET_NAME
@@ -168,7 +149,12 @@ public class AwsS3Client {
                 + FOLDER;
     }
 
-    private String getKey(String path, String fileName) {
+    private String getKey(Request request) {
+
+        final String path = getPath();
+
+        final String fileName = request.getFileName();
+
         return path + "/" + fileName;
     }
 
