@@ -10,12 +10,15 @@
     </parent>
     <groupId>com.prottonne</groupId>
     <artifactId>junit-java</artifactId>
-    <version>1.0.9</version>
+    <version>1.0.12</version>
     <name>junit-java</name>
     <description>JUnit is a unit testing framework for the Java programming language. Mockito is an open source testing framework for Java released under the MIT License. Hamcrest is a framework that assists writing software tests in the Java programming language.</description>
 
     <properties>
         <java.version>11</java.version>
+        <sonar.sources>src/main/java</sonar.sources>
+        <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.cpd.exclusions>**/*Entity.java</sonar.cpd.exclusions>
     </properties>
 
     <dependencies>
@@ -95,6 +98,10 @@
                 <version>3.8.1</version>
                 <configuration>
                     <release>11</release>
+                    <compilerArgs>
+                        <arg>-verbose</arg>
+                        <arg>-Xlint:all,-options,-path</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>

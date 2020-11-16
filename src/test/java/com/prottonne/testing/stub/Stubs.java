@@ -95,7 +95,7 @@ public class Stubs {
     }
 
     public static List<ManyEntity> MANY_ENTITY_LIST() {
-        List<ManyEntity> list = new ArrayList();
+        List<ManyEntity> list = new ArrayList<ManyEntity>();
         list.add(MANY_ENTITY());
         return list;
     }
