@@ -1,6 +1,5 @@
 package com.prottonne.testing.aws;
 
-import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.GetObjectRequest;
@@ -132,7 +131,7 @@ public class AwsS3Client {
         return response;
     }
 
-    private List<S3ObjectSummary> listS3ObjectSummaryByName(String key) throws SdkClientException {
+    private List<S3ObjectSummary> listS3ObjectSummaryByName(String key) {
         ListObjectsRequest listObjectsRequest = new ListObjectsRequest();
         listObjectsRequest.setBucketName(S3_BUCKET_NAME);
         listObjectsRequest.setPrefix(key);
