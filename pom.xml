@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.prottonne</groupId>
     <artifactId>junit-java</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <name>junit-java</name>
     <description>JUnit is a unit testing framework for the Java programming language. Mockito is an open source testing framework for Java released under the MIT License. Hamcrest is a framework that assists writing software tests in the Java programming language.</description>
 
@@ -21,21 +21,35 @@
         <sonar.cpd.exclusions>**/*Entity.java</sonar.cpd.exclusions>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
+    <dependencies>        
+        <!-- exclude junit 4 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Junit 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
         </dependency>
         
+        <!-- mvc -->
+        <!-- httpServerRequest / response -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         
         <!-- Amazon S3 -->
@@ -44,12 +58,7 @@
             <artifactId>aws-java-sdk-s3</artifactId>
             <version>1.11.792</version>
         </dependency>
-        
-        <!-- httpServerRequest / response -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>           
-        </dependency>
+
         <!-- FEIGN -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
