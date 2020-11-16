@@ -123,10 +123,7 @@ public class RootEntity implements Serializable {
             return false;
         }
         final RootEntity other = (RootEntity) obj;
-        if (!Objects.equals(this.guid, other.guid)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.guid, other.guid);
     }
 
     @Override
