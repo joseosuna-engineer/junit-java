@@ -97,6 +97,10 @@
                 <version>3.8.1</version>
                 <configuration>
                     <release>11</release>
+                    <compilerArgs>
+                        <arg>-verbose</arg>
+                        <arg>-Xlint:all,-options,-path</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
