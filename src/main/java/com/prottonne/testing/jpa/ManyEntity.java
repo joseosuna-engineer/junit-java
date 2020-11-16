@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -20,8 +19,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "many_entity")
-@NamedQueries({
-    @NamedQuery(name = "ManyEntity.findAll", query = "SELECT e FROM ManyEntity e")})
+@NamedQuery(name = "ManyEntity.findAll", query = "SELECT e FROM ManyEntity e")
 public class ManyEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
