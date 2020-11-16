@@ -12,7 +12,6 @@ import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -22,8 +21,7 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 @Entity
 @Table(name = "root_entity")
-@NamedQueries({
-    @NamedQuery(name = "RootEntity.findAll", query = "SELECT e FROM RootEntity e")})
+@NamedQuery(name = "RootEntity.findAll", query = "SELECT e FROM RootEntity e")
 public class RootEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
