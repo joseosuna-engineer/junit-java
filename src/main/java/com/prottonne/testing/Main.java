@@ -23,7 +23,7 @@ public class Main {
     @Value("${connection.timeup}")
     private String connectionTimeup;
 
-    private final String pathService = "WSPackage";
+    private static final String pathService = "WSPackage";
     private static final String CLOSE = "close";
 
     public static void main(String[] args) {
