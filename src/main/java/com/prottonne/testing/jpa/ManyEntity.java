@@ -91,10 +91,7 @@ public class ManyEntity implements Serializable {
             return false;
         }
         final ManyEntity other = (ManyEntity) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
