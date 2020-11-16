@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -19,8 +18,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "one_entity")
-@NamedQueries({
-    @NamedQuery(name = "OneEntity.findAll", query = "SELECT e FROM OneEntity e")})
+@NamedQuery(name = "OneEntity.findAll", query = "SELECT e FROM OneEntity e")
 public class OneEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
