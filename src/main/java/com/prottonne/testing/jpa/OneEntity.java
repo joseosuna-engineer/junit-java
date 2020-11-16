@@ -145,10 +145,7 @@ public class OneEntity implements Serializable {
             return false;
         }
         final OneEntity other = (OneEntity) obj;
-        if (!Objects.equals(this.guid, other.guid)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.guid, other.guid);
     }
 
     @Override
