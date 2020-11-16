@@ -23,7 +23,7 @@ public class Main {
     @Value("${connection.timeup}")
     private String connectionTimeup;
 
-    private static final String pathService = "WSPackage";
+    private static final String PATH_SERVICE = "WSPackage";
     private static final String CLOSE = "close";
 
     public static void main(String[] args) {
@@ -34,7 +34,7 @@ public class Main {
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
         marshaller.setContextPath(
-                pathService);
+                PATH_SERVICE);
         return marshaller;
     }
 
