@@ -5,19 +5,20 @@
 JUnit is a unit testing framework for the Java programming language. JUnit has been important in the development of test-driven development, and is one of a family of unit testing frameworks which is collectively known as xUnit that originated with SUnit.
 
 ```java
-import org.junit.*;
+package com.prottonne;
 
-public class FoobarTest {
-    @BeforeClass
-    public static void setUpClass() throws Exception {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+class MyJunit5Test {
+
+    @BeforeEach
+    public void configure() {
         // Code executed before the first test method
     }
 
-    @Before
-    public void setUp() throws Exception {
-        // Code executed before each test
-    }
- 
     @Test
     public void testOneThing() {
         // Code that tests one thing
@@ -33,15 +34,6 @@ public class FoobarTest {
         // Code that tests something else
     }
 
-    @After
-    public void tearDown() throws Exception {
-        // Code executed after each test 
-    }
- 
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-        // Code executed after the last test method 
-    }
 }
 
 ```
@@ -70,45 +62,34 @@ Static analysis is called static because it does not rely on actually running th
 Mockito is an open source testing framework for Java released under the MIT License.The framework allows the creation of test double objects (mock objects) in automated unit tests for the purpose of test-driven development (TDD) or behavior-driven development (BDD).
 
 ```java
-package org.examples;
+package com.prottonne;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import org.mockito.Mock;
 import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import org.junit.Before;
-import org.junit.Test;
+@ExtendWith(MockitoExtension.class)
+class MyMockitoTest {
 
-import org.examples.HelloApplication.HelloActable;
-import org.examples.HelloApplication.HelloAction;
-import org.examples.HelloApplication.Greeter;
-import org.examples.HelloApplication.HelloGreeter;
+    @InjectMocks
+    private MyClass myClass;
 
-public class HelloActionIntegrationTest {
-   HelloActable helloAction;
-   Greeter helloGreeter;
-   Appendable helloWriterMock;
-   
-   @Before
-   public void setUp() {
-      helloGreeter = new HelloGreeter("welcome", " says ");
-      helloWriterMock = mock(Appendable.class);
-      helloAction = new HelloAction(helloGreeter, helloWriterMock);
-   }
-   
-   @Test
-   public void testSayHello() throws Exception {
-      when(helloWriterMock.append(any(String.class))).thenReturn(helloWriterMock);
+    @Mock
+    private MyMockedClass myMockedObject;
 
-      helloAction.sayHello("integrationTest", "universe");
+    @Test
+    void testOneThing() {
 
-      verify(helloWriterMock, times(2)).append(any(String.class));
-      verify(helloWriterMock, times(1)).append(eq("integrationTest says "));
-      verify(helloWriterMock, times(1)).append(eq("welcome universe"));
-   }
+        when(myMockedObject.getData()).thenReturn(Stubs.EXPECTED_DATA());
+
+        Response response = myClass.myMethod(Stubs.REQUEST());
+
+        // Code that tests one thing, asserts
+    }
+
 }
 
 ```
@@ -120,19 +101,48 @@ public class HelloActionIntegrationTest {
 Hamcrest is a framework that assists writing software tests in the Java programming language. It supports creating customized assertion matchers ('Hamcrest' is an anagram of 'matchers'), allowing match rules to be defined declaratively.These matchers have uses in unit testing frameworks such as JUnit and jMock.
 
 ```java
-import org.junit.jupiter.api.Test;
-import static org.hamcrest.MatcherAssert.assertThat; 
-import static org.hamcrest.Matchers.*;
+package com.prottonne;
 
-public class BiscuitTest {
-  @Test 
-  public void testEquals() { 
-    Biscuit theBiscuit = new Biscuit("Ginger"); 
-    Biscuit myBiscuit = new Biscuit("Ginger"); 
-    assertThat(theBiscuit, equalTo(myBiscuit)); 
-    assertThat("chocolate chips", theBiscuit.getChocolateChipCount(), equalTo(10)); 
-    assertThat("hazelnuts", theBiscuit.getHazelnutCount(), equalTo(3));
-  } 
+import org.mockito.Mock;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+import static org.mockito.Mockito.when;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+@ExtendWith(MockitoExtension.class)
+class MyHamcrestTest {
+
+    @InjectMocks
+    private MyClass myClass;
+
+    @Mock
+    private MyMockedClass myMockedObject;
+
+    @Test
+    void testOneThing() {
+
+        when(myMockedObject.getData()).thenReturn(Stubs.EXPECTED_DATA());
+
+        Response response = myClass.myMethod(Stubs.REQUEST());
+
+        assertThat(response.getSomeObject(),
+                is(
+                        equalTo(
+                                Stubs.EXPECTED_OBJECT()
+                        )
+                )
+        );
+
+        assertThat(response.getSomeBoolean(),
+                is(
+                        Boolean.TRUE
+                )
+        );
+    }
 } 
 
 ```
@@ -145,25 +155,25 @@ JaCoCo is an open-source toolkit for measuring and reporting Java code coverage.
 
 ```xml
 <plugin>
-   <groupId>org.jacoco</groupId>
-   <artifactId>jacoco-maven-plugin</artifactId>
-   <version>0.8.5</version>
-   <executions>
-      <execution>
-         <id>jacoco-initialize</id>
-         <phase>initialize</phase>
-         <goals>
-            <goal>prepare-agent</goal>
-         </goals>
-      </execution>
-      <execution>
-         <id>jacoco-report</id>
-         <phase>prepare-package</phase>
-         <goals>
-            <goal>report</goal>
-         </goals>
-      </execution>
-   </executions>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.6</version>
+    <executions>
+        <execution>
+            <id>jacoco-initialize</id>
+            <phase>initialize</phase>
+            <goals>
+                <goal>prepare-agent</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>jacoco-report</id>
+            <phase>prepare-package</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
+        </execution>
+    </executions>
 </plugin>
 
 ```
