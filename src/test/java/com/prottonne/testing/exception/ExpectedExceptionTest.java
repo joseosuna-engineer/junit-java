@@ -4,8 +4,8 @@ import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.prottonne.testing.aws.AwsS3Client;
+import com.prottonne.testing.dto.Request;
 import com.prottonne.testing.stub.Stubs;
-import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,13 +34,15 @@ class ExpectedExceptionTest {
     }
 
     @Test()
-    void testPutAmazonServiceException() throws IOException {
+    void testPutAmazonServiceException() {
 
         when(amazonS3.putObject(any(PutObjectRequest.class))).
                 thenThrow(new AmazonServiceException("errorMessage"));
 
+        Request request = Stubs.REQUEST();
+
         Assertions.assertThrows(AmazonServiceException.class, () -> {
-            awsS3Client.put(Stubs.REQUEST());
+            awsS3Client.put(request);
         });
 
     }
