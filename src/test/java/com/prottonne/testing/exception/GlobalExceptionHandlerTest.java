@@ -10,13 +10,13 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class GlobalExceptionHandlerTest {
+class GlobalExceptionHandlerTest {
 
     @InjectMocks
     private GlobalExceptionHandler globalExceptionHandler;
 
     @Test
-    public void testSomeExceptionHandler() {
+    void testSomeExceptionHandler() {
 
         Response reponse = globalExceptionHandler.someExceptionHandler(Stubs.SOME_EXCEPTION(Stubs.EXCEPTION_MESSAGE));
 

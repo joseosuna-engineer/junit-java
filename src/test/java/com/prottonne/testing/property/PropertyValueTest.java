@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
 @ExtendWith(MockitoExtension.class)
-public class PropertyValueTest {
+class PropertyValueTest {
 
     @InjectMocks
     private PropertyValue propertyValue;
@@ -25,7 +25,7 @@ public class PropertyValueTest {
     }
 
     @Test
-    public void testGetMessageWithProperties() {
+    void testGetMessageWithProperties() {
 
         Response response = propertyValue.getMessageWithProperties();
 
