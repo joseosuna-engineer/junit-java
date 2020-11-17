@@ -22,7 +22,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class JpaClientTest {
+class JpaClientTest {
 
     @InjectMocks
     private JpaClient jpaClient;
@@ -49,7 +49,7 @@ public class JpaClientTest {
     private Path<Object> pathObject;
 
     @Test
-    public void testCreate() {
+    void testCreate() {
 
         when(query.getSingleResult()).thenReturn(Stubs.GENERATE_GUID());
 
@@ -64,7 +64,7 @@ public class JpaClientTest {
     }
 
     @Test
-    public void testCreateWithChild() {
+    void testCreateWithChild() {
 
         when(query.getSingleResult()).thenReturn(Stubs.GENERATE_GUID());
 
@@ -92,7 +92,7 @@ public class JpaClientTest {
     }
 
     @Test
-    public void testDeleteById() {
+    void testDeleteById() {
 
         when(entityManager.find(eq(RootEntity.class), any(Integer.class))).
                 thenReturn(Stubs.ROOT_ENTITY());
@@ -106,7 +106,7 @@ public class JpaClientTest {
     }
 
     @Test
-    public void testDeleteAll() {
+    void testDeleteAll() {
 
         when(entityManager.getCriteriaBuilder()).
                 thenReturn(criteriaBuilder);

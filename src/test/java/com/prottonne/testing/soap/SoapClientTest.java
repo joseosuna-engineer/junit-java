@@ -18,7 +18,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 @ExtendWith(MockitoExtension.class)
-public class SoapClientTest {
+class SoapClientTest {
 
     @InjectMocks
     private SoapClient soapClient;
@@ -33,7 +33,7 @@ public class SoapClientTest {
     }
 
     @Test
-    public void testSomeAction() {
+    void testSomeAction() {
 
         when(
                 webServiceTemplate.marshalSendAndReceive(

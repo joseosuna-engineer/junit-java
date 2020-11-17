@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class ExpectedExceptionTest {
+class ExpectedExceptionTest {
 
     @InjectMocks
     private AwsS3Client awsS3Client;
@@ -25,7 +25,7 @@ public class ExpectedExceptionTest {
     private AmazonS3 amazonS3;
 
     @Test()
-    public void testPutNullPointerException() {
+    void testPutNullPointerException() {
 
         Assertions.assertThrows(NullPointerException.class, () -> {
             awsS3Client.put(null);
@@ -34,7 +34,7 @@ public class ExpectedExceptionTest {
     }
 
     @Test()
-    public void testPutAmazonServiceException() throws IOException {
+    void testPutAmazonServiceException() throws IOException {
 
         when(amazonS3.putObject(any(PutObjectRequest.class))).
                 thenThrow(new AmazonServiceException("errorMessage"));

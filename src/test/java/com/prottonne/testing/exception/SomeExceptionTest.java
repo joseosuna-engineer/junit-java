@@ -10,10 +10,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class SomeExceptionTest {
+class SomeExceptionTest {
 
     @Test
-    public void testAll() {
+    void testAll() {
 
         SomeException someException = Stubs.SOME_EXCEPTION();
 

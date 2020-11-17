@@ -24,7 +24,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mock.web.MockMultipartFile;
 
 @ExtendWith(MockitoExtension.class)
-public class AwsS3ClientTest {
+class AwsS3ClientTest {
 
     @InjectMocks
     private AwsS3Client awsS3Client;
@@ -48,7 +48,7 @@ public class AwsS3ClientTest {
     private MockMultipartFile multipartFile;
 
     @Test
-    public void testPut() throws IOException {
+    void testPut() throws IOException {
 
         Response response = awsS3Client.put(Stubs.REQUEST());
 
@@ -59,7 +59,7 @@ public class AwsS3ClientTest {
     }
 
     @Test
-    public void testGet() throws IOException {
+    void testGet() throws IOException {
 
         when(s3Object.getObjectContent()).thenReturn(Stubs.S3_OBJECT_INPUT_STREAM(httpRequestBase));
 
@@ -77,7 +77,7 @@ public class AwsS3ClientTest {
     }
 
     @Test
-    public void testDeleteAll() {
+    void testDeleteAll() {
 
         when(amazonS3.listObjects(any(ListObjectsRequest.class))).
                 thenReturn(Stubs.OBJECT_LISTING(null));
@@ -92,7 +92,7 @@ public class AwsS3ClientTest {
     }
 
     @Test
-    public void testIsUploaded() {
+    void testIsUploaded() {
 
         when(amazonS3.listObjects(any(ListObjectsRequest.class))).
                 thenReturn(Stubs.OBJECT_LISTING(Stubs.FILE_NAME));
